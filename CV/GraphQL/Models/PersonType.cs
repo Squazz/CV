@@ -6,15 +6,12 @@ namespace CV.GraphQL.Models
     {
         public PersonType()
         {
-            // Field(x => x.FirstName).Resolve((x) => {
-            //     return "Hello!";
-            // }).Description("Perso's First Name");
-
-            Field(x => x.Id).Description("Peron's Id");
-            Field(x => x.Name).Description("Person's name");
-            Field(x => x.Age).Resolve(x => {
-                return 25;
-            }).Description("A person's age");
+            Field(x => x.Id).Description("Persons Id");
+            Field(x => x.Name).Description("Persons name");
+            Field(x => x.Companies).Description("Personss companies");
+            Field(x => x.Educations).Description("Personss educations");
+            Field(x => x.Skills).Description("Personss skills");
+            Field(x => x.Age).Description("A persons age");
         }
     }
 }

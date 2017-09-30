@@ -6,10 +6,22 @@ namespace CV.GraphQL.Models
     {
         public CVQuery()
         {
-            Field<ProjectType>("hero", resolve: context => new Project { Id = 1, Name = "R2-D2" });
-            Field<PersonType>("person", resolve: context => new Person { Id = 1, Name = "Mr Happy", Age = 32 });
+            Name = "Query";
 
-            // Field<PersonType>("person", resolve: context => new Person { Id = 5, FirstName = "Joe", Surname = "Woodward", Age = 32 });
+            var database = new Database();
+
+            Field<PersonType>(
+                "person",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>>
+                    {
+                        Name = "id",
+                        Description = "Id of the person",
+                        //DefaultValue = 1 // Didn't work as expected :/
+                    }
+                ),
+                resolve: context => database.GePersonByIdAsync(context.GetArgument<int>("id"))
+            );
         }
     }
 }

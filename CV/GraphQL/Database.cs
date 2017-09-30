@@ -19,16 +19,17 @@ namespace CV.GraphQL
             {
                 Id = 1,
                 Name = "Kasper Ploumgmann",
-                Companies = { 1 },
-                Educations = { 1 },
-                Skills = { 1, 2, 3 }
+                Birthday = DateTime.Parse("1991-03-28"),
+                Companies = new List<int>() { 1 },
+                Educations = new List<int>() { 1 },
+                Skills = new List<int>() { 1, 2, 3 }
             });
 
             _companies.Add(new Company()
             {
                 Id = 1,
                 Name = "Mindworking",
-                Projects = { 1 }
+                Projects = new List<int>() { 1 }
             });
             
             _projects.Add(new Project()
