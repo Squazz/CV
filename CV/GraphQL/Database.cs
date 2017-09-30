@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CV.GraphQL.Entities;
 
 namespace CV.GraphQL
 {
@@ -85,6 +86,21 @@ namespace CV.GraphQL
         public Task<Company> GetCompanydByIdAsync(int id)
         {
             return Task.FromResult(_companies.FirstOrDefault(h => h.Id == id));
+        }
+
+        public Task<Project> GetProjectdByIdAsync(int id)
+        {
+            return Task.FromResult(_projects.FirstOrDefault(h => h.Id == id));
+        }
+
+        public Task<Education> GetEducationByIdAsync(int id)
+        {
+            return Task.FromResult(_educations.FirstOrDefault(h => h.Id == id));
+        }
+
+        public Task<Skill> GetSkillByIdAsync(int id)
+        {
+            return Task.FromResult(_skills.FirstOrDefault(h => h.Id == id));
         }
     }
 }

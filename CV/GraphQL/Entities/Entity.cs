@@ -1,4 +1,4 @@
-﻿namespace CV.GraphQL
+﻿namespace CV.GraphQL.Entities
 {
     public class Entity
     {

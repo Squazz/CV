@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using CV.GraphQL.Entities;
+using GraphQL.Types;
 
 namespace CV.GraphQL.Models
 {

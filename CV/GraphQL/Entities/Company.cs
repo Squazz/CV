@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CV.GraphQL
+namespace CV.GraphQL.Entities
 {
     public class Company : Entity
     {

@@ -2,7 +2,7 @@
 
 namespace CV.GraphQL.Models
 {
-    public class CVQuery : ObjectGraphType
+    public class CVQuery : ObjectGraphType<object>
     {
         public CVQuery()
         {
@@ -21,6 +21,58 @@ namespace CV.GraphQL.Models
                     }
                 ),
                 resolve: context => database.GePersonByIdAsync(context.GetArgument<int>("id"))
+            );
+
+            Field<CompanyType>(
+                "company",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>>
+                    {
+                        Name = "id",
+                        Description = "Id of the company",
+                        //DefaultValue = 1 // Didn't work as expected :/
+                    }
+                ),
+                resolve: context => database.GetCompanydByIdAsync(context.GetArgument<int>("id"))
+            );
+
+            Field<ProjectType>(
+                "project",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>>
+                    {
+                        Name = "id",
+                        Description = "Id of the company",
+                        //DefaultValue = 1 // Didn't work as expected :/
+                    }
+                ),
+                resolve: context => database.GetProjectdByIdAsync(context.GetArgument<int>("id"))
+            );
+
+            Field<EducationType>(
+                "education",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>>
+                    {
+                        Name = "id",
+                        Description = "Id of the company",
+                        //DefaultValue = 1 // Didn't work as expected :/
+                    }
+                ),
+                resolve: context => database.GetSkillByIdAsync(context.GetArgument<int>("id"))
+            );
+
+            Field<SkillType>(
+                "skill",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>>
+                    {
+                        Name = "id",
+                        Description = "Id of the company",
+                        //DefaultValue = 1 // Didn't work as expected :/
+                    }
+                ),
+                resolve: context => database.GetSkillByIdAsync(context.GetArgument<int>("id"))
             );
         }
     }
