@@ -6,5 +6,7 @@ namespace CV.GraphQL
     {
         public int Age { get; set; }
         public List<int> Companies { get; set; }
+        public List<int> Skills { get; set; }
+        public List<int> Educations { get; set; }
     }
 }

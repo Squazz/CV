@@ -19,12 +19,16 @@ namespace CV.GraphQL
             {
                 Id = 1,
                 Name = "Kasper Ploumgmann",
+                Companies = { 1 },
+                Educations = { 1 },
+                Skills = { 1, 2, 3 }
             });
 
             _companies.Add(new Company()
             {
                 Id = 1,
                 Name = "Mindworking",
+                Projects = { 1 }
             });
             
             _projects.Add(new Project()
