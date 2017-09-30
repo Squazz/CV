@@ -1,9 +1,10 @@
-﻿namespace CV.GraphQL
+﻿using System.Collections.Generic;
+
+namespace CV.GraphQL
 {
-    public class Person
+    public class Person : Entity
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
         public int Age { get; set; }
+        public List<int> Companies { get; set; }
     }
 }

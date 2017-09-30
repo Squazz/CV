@@ -2,11 +2,11 @@
 
 namespace CV.GraphQL.Models
 {
-    public class StarWarsQuery : ObjectGraphType
+    public class CVQuery : ObjectGraphType
     {
-        public StarWarsQuery()
+        public CVQuery()
         {
-            Field<DroidType>("hero", resolve: context => new Droid { Id = 1, Name = "R2-D2" });
+            Field<ProjectType>("hero", resolve: context => new Project { Id = 1, Name = "R2-D2" });
             Field<PersonType>("person", resolve: context => new Person { Id = 1, Name = "Mr Happy", Age = 32 });
 
             // Field<PersonType>("person", resolve: context => new Person { Id = 5, FirstName = "Joe", Surname = "Woodward", Age = 32 });

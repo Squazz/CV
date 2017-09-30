@@ -13,7 +13,7 @@ namespace CV.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQlQuery query)
         {
-            var schema = new Schema { Query = new StarWarsQuery() };
+            var schema = new Schema { Query = new CVQuery() };
 
             var result = await new DocumentExecuter().ExecuteAsync(x =>
             {
