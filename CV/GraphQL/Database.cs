@@ -78,6 +78,54 @@ namespace CV.GraphQL
             return companies;
         }
 
+        public IEnumerable<Education> GetEducations(Person character)
+        {
+            if (character == null)
+            {
+                return null;
+            }
+
+            var educations = new List<Education>();
+            var lookup = character.Educations;
+            if (lookup != null)
+            {
+                educations.AddRange(_educations.Where(h => lookup.Contains(h.Id)));
+            }
+            return educations;
+        }
+
+        public IEnumerable<Skill> GetSkills(Person character)
+        {
+            if (character == null)
+            {
+                return null;
+            }
+
+            var skills = new List<Skill>();
+            var lookup = character.Educations;
+            if (lookup != null)
+            {
+                skills.AddRange(_skills.Where(h => lookup.Contains(h.Id)));
+            }
+            return skills;
+        }
+
+        public IEnumerable<Project> GetProjects(Company company)
+        {
+            if (company == null)
+            {
+                return null;
+            }
+
+            var projects = new List<Project>();
+            var lookup = company.Projects;
+            if (lookup != null)
+            {
+                projects.AddRange(_projects.Where(h => lookup.Contains(h.Id)));
+            }
+            return projects;
+        }
+
         public Task<Person> GePersonByIdAsync(int id)
         {
             return Task.FromResult(_persons.FirstOrDefault(h => h.Id == id));

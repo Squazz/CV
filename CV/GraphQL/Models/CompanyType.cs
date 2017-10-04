@@ -7,9 +7,15 @@ namespace CV.GraphQL.Models
     {
         public CompanyType()
         {
+            var data = new Database();
+
             Field(x => x.Id).Description("Companys Id");
             Field(x => x.Name).Description("Companys name");
-            Field(x => x.Projects).Description("Companys Projects");
+            Field<ListGraphType<CompanyType>>(
+                name: "companies",
+                resolve: context => data.GetProjects(context.Source),
+                description: "Companys Projects"
+            );
         }
     }
 }
