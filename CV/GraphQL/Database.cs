@@ -102,7 +102,7 @@ namespace CV.GraphQL
             }
 
             var skills = new List<Skill>();
-            var lookup = character.Educations;
+            var lookup = character.Skills;
             if (lookup != null)
             {
                 skills.AddRange(_skills.Where(h => lookup.Contains(h.Id)));
