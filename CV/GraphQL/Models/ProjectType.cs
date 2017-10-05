@@ -8,7 +8,7 @@ namespace CV.GraphQL.Models
         public ProjectType()
         {
             Field(x => x.Id).Description("The Id of the Project.");
-            Field(x => x.Name, nullable: true).Description("The name of the Project.");
+            Field(x => x.Name).Description("The name of the Project.");
         }
     }
 }

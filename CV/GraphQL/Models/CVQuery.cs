@@ -8,7 +8,7 @@ namespace CV.GraphQL.Models
         {
             Name = "Query";
 
-            var database = new Database();
+            var database = new Database.Database();
 
             Field<PersonType>(
                 "person",

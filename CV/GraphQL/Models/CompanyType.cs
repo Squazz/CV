@@ -1,19 +1,22 @@
 ﻿using CV.GraphQL.Entities;
+using CV.GraphQL.Repositories;
 using GraphQL.Types;
 
 namespace CV.GraphQL.Models
 {
     public class CompanyType : ObjectGraphType<Company>
     {
+        private IProjectRepository _projectRepository;
+
         public CompanyType()
         {
-            var data = new Database();
+            _projectRepository = new SimpleProjectRepository();
 
             Field(x => x.Id).Description("Companys Id");
             Field(x => x.Name).Description("Companys name");
             Field<ListGraphType<CompanyType>>(
                 name: "companies",
-                resolve: context => data.GetProjects(context.Source),
+                resolve: context => _projectRepository.GetProjects(context.Source),
                 description: "Companys Projects"
             );
         }

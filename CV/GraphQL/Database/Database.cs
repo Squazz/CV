@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CV.GraphQL.Entities;
 
-namespace CV.GraphQL
+namespace CV.GraphQL.Database
 {
     public class Database
     {
