@@ -22,7 +22,7 @@ namespace CV.GraphQL.Database
                 Name = "Kasper Ploumgmann",
                 Birthday = DateTime.Parse("1991-03-28"),
                 Companies = new List<int>() { 1 },
-                Educations = new List<int>() { 1 },
+                Educations = new List<int>() { 1, 2, 3, 4, 5 },
                 Skills = new List<int>() { 1, 2, 3 }
             });
 
@@ -42,7 +42,27 @@ namespace CV.GraphQL.Database
             _educations.Add(new Education()
             {
                 Id = 1,
-                Name = " Folkeskole"
+                Name = "Folkeskole"
+            });
+            _educations.Add(new Education()
+            {
+                Id = 2,
+                Name = "Efterskole"
+            });
+            _educations.Add(new Education()
+            {
+                Id = 3,
+                Name = "Gymnasium / HTX"
+            });
+            _educations.Add(new Education()
+            {
+                Id = 4,
+                Name = "Højskole"
+            });
+            _educations.Add(new Education()
+            {
+                Id = 5,
+                Name = "Datalogi påbegyndt"
             });
 
             _skills.Add(new Skill()

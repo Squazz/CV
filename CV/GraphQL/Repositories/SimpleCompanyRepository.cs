@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CV.GraphQL.Entities;
 
 namespace CV.GraphQL.Repositories
@@ -10,6 +11,11 @@ namespace CV.GraphQL.Repositories
         public IEnumerable<Company> GetCompanies(Person character)
         {
             return _database.GetCompanies(character);
+        }
+
+        public Task<Company> GetCompanydByIdAsync(int id)
+        {
+            return _database.GetCompanydByIdAsync(id);
         }
     }
 }

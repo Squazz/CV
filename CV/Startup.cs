@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CV.GraphQL.Repositories;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,12 @@ namespace CV
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddTransient<ICompanyRepository, SimpleCompanyRepository>();
+            services.AddTransient<IEducationRepository, SimpleEducationRepository>();
+            services.AddTransient<ISkillRepository, SimpleSkillRepository>();
+            services.AddTransient<IProjectRepository, SimpleProjectRepository>();
+            services.AddTransient<IPersonRepository, SimplePersonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

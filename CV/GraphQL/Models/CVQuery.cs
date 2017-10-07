@@ -1,14 +1,33 @@
-﻿using GraphQL.Types;
+﻿using CV.GraphQL.Repositories;
+using GraphQL.Types;
 
 namespace CV.GraphQL.Models
 {
     public class CVQuery : ObjectGraphType<object>
     {
+        private ICompanyRepository _companyRepository;
+        private IEducationRepository _educationRepository;
+        private ISkillRepository _skillRepository;
+        private IPersonRepository _personRepository;
+        private IProjectRepository _projectRepository;
+
+        //public CVQuery(ICompanyRepository companyRepository, IEducationRepository educationRepository, ISkillRepository skillRepository, IPersonRepository personRepository, IProjectRepository projectRepository)
+        //{
+        //    _companyRepository = companyRepository;
+        //    _educationRepository = educationRepository;
+        //    _skillRepository = skillRepository;
+        //    _personRepository = personRepository;
+        //    _projectRepository = projectRepository;
+
         public CVQuery()
         {
-            Name = "Query";
+            _companyRepository = new SimpleCompanyRepository();
+            _educationRepository = new SimpleEducationRepository();
+            _skillRepository = new SimpleSkillRepository();
+            _personRepository = new SimplePersonRepository();
+            _projectRepository = new SimpleProjectRepository();
 
-            var database = new Database.Database();
+            Name = "Query";
 
             Field<PersonType>(
                 "person",
@@ -20,7 +39,7 @@ namespace CV.GraphQL.Models
                         //DefaultValue = 1 // Didn't work as expected :/
                     }
                 ),
-                resolve: context => database.GePersonByIdAsync(context.GetArgument<int>("id"))
+                resolve: context => _personRepository.GePersonByIdAsync(context.GetArgument<int>("id"))
             );
 
             Field<CompanyType>(
@@ -33,7 +52,7 @@ namespace CV.GraphQL.Models
                         //DefaultValue = 1 // Didn't work as expected :/
                     }
                 ),
-                resolve: context => database.GetCompanydByIdAsync(context.GetArgument<int>("id"))
+                resolve: context => _companyRepository.GetCompanydByIdAsync(context.GetArgument<int>("id"))
             );
 
             Field<ProjectType>(
@@ -46,7 +65,7 @@ namespace CV.GraphQL.Models
                         //DefaultValue = 1 // Didn't work as expected :/
                     }
                 ),
-                resolve: context => database.GetProjectdByIdAsync(context.GetArgument<int>("id"))
+                resolve: context => _projectRepository.GetProjectdByIdAsync(context.GetArgument<int>("id"))
             );
 
             Field<EducationType>(
@@ -59,7 +78,7 @@ namespace CV.GraphQL.Models
                         //DefaultValue = 1 // Didn't work as expected :/
                     }
                 ),
-                resolve: context => database.GetSkillByIdAsync(context.GetArgument<int>("id"))
+                resolve: context => _educationRepository.GetEducationByIdAsync(context.GetArgument<int>("id"))
             );
 
             Field<SkillType>(
@@ -72,7 +91,7 @@ namespace CV.GraphQL.Models
                         //DefaultValue = 1 // Didn't work as expected :/
                     }
                 ),
-                resolve: context => database.GetSkillByIdAsync(context.GetArgument<int>("id"))
+                resolve: context => _skillRepository.GetSkillByIdAsync(context.GetArgument<int>("id"))
             );
         }
     }

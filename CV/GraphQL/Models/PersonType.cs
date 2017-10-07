@@ -10,6 +10,12 @@ namespace CV.GraphQL.Models
         private IEducationRepository _educationRepository;
         private ISkillRepository _skillRepository;
 
+        //public PersonType(ICompanyRepository company, IEducationRepository education, ISkillRepository skill)
+        //{
+        //    _companyRepository = company;
+        //    _educationRepository = education;
+        //    _skillRepository = skill;
+
         public PersonType()
         {
             _companyRepository = new SimpleCompanyRepository();
