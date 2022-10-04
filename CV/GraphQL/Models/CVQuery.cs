@@ -1,4 +1,5 @@
 ﻿using CV.GraphQL.Repositories;
+using GraphQL;
 using GraphQL.Types;
 
 namespace CV.GraphQL.Models
